@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChillyHub Obfuscator</title>
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: monospace;
+            text-align: center;
+        }
+        textarea {
+            width: 90%;
+            height: 200px;
+            background: #111;
+            color: #0f0;
+            border: none;
+            padding: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background: #222;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>ChillyHub Obfuscator</h2>
+<p>By ChillyHubdz</p>
+
+<textarea id="input" placeholder="Paste script here..."></textarea><br>
+
+<button onclick="obfuscate()">OBFUSCATE</button>
+<button onclick="download()">TẢI FILE</button>
+
+<textarea id="output" placeholder="Result..."></textarea>
+
+<script>
+let result = "";
+
+function obfuscate() {
+    let code = document.getElementById("input").value;
+
+    result = "local _=" + btoa(code) + "\nloadstring(game:HttpGet('https://decode.com'))()";
+
+    document.getElementById("output").value = result;
+}
+
+function download() {
+    let blob = new Blob([result], { type: "text/plain" });
+    let a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "chillyhub_obf.lua";
+    a.click();
+}
+</script>
+
+</body>
+                                       </html>
